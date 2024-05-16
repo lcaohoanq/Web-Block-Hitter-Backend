@@ -112,7 +112,8 @@ class DatabaseServices {
 
   async getAllAccounts(): Promise<WithId<Document>[] | undefined> {
     try {
-      return this.db.collection(dbCollection).find().toArray();
+      const data = this.db.collection(dbCollection).find().toArray();
+      return data ?? [];
     } catch (error) {
       console.log(error);
     }
